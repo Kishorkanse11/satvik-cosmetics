@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satvik Beauty - Natural Ayurvedic Cosmetics</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #ff6f99;
+            --accent: #d84f7a;
+            --text: #0b0b0b;
+            --background: #ffffff;
+            --light-gray: #f5f5f5;
+            --gray: #e0e0e0;
+            --dark-gray: #888888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--text);
+        }
+        
+        /* Hero full-bleed with overlay and centered content */
+        .hero-hero{
+          position: relative;
+          width: 100%;
+          min-height: 520px;                 /* adjust height as needed */
+          background-image: url('bg8.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: flex;
+          align-items: center;
+          color: #fff;
+          overflow: hidden;
+        }
+
+        /* subtle dark overlay for text readability */
+        .hero-overlay{
+          position: absolute;
+          left: 0; right: 0; top: 0; bottom: 0;
+          background: linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.18) 45%, rgba(0,0,0,0.45) 100%);
+          pointer-events: none;
+        }
+
+        /* keep content inside container width */
+        .hero-inner{
+          position: relative;
+          z-index: 2;
+          width: 90%;
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start; /* text left */
+        }
+
+        /* hero text block */
+        .hero-text-block{
+          max-width: 58%;
+          padding: 40px 20px;
+        }
+
+        /* typography similar to screenshot */
+        .hero-title{
+          font-size: 56px;
+          line-height: 1.02;
+          font-weight: 800;
+          margin: 0 0 18px 0;
+          color: #fff;
+          letter-spacing: -0.02em;
+        }
+
+        .hero-sub{
+          font-size: 18px;
+          color: rgba(255,255,255,0.92);
+          margin-bottom: 22px;
+          line-height: 1.5;
+        }
+
+        /* CTAs */
+        .hero-ctas { display:flex; gap:14px; }
+        .hero-ctas .btn { padding:12px 22px; font-weight:700; border-radius:8px; }
+        .hero-ctas .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.85); color: white; }
+
+        /* Responsive */
+        @media (max-width: 992px){
+          .hero-title{ font-size: 40px; }
+          .hero-text-block{ max-width: 72%; }
+          .hero-hero{ min-height: 420px; }
+        }
+
+        @media (max-width: 680px){
+          .hero-inner{ justify-content: center; text-align:center; }
+          .hero-text-block{ max-width: 100%; padding: 28px 12px; }
+          .hero-title{ font-size: 32px; }
+          .hero-sub{ font-size: 15px; }
+          .hero-ctas{ justify-content:center; flex-direction:column; gap:10px; }
+          .hero-overlay{ background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 45%, rgba(0,0,0,0.55) 100%); }
+        }
+        
+        /* Topbar */
+        .topbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+        
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-bar input {
+            padding: 8px 12px;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            width: 200px;
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+        
+        .cart-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .category-card {
+            background-color: var(--light-gray);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .category-card:hover .category-icon {
+            color: white;
+        }
+        
+        .category-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background-color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-gray);
+        }
+        
+        .product-details {
+            padding: 20px;
+        }
+        
+        .product-name {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .product-ingredients {
+            font-size: 14px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .product-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+        
+        /* YouTube Videos Section */
+        .videos-section {
+            background-color: var(--light-gray);
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .video-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background-color: var(--gray);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .video-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .video-description {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+        
+        /* Certification */
+        .certification {
+            background-color: var(--light-gray);
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 8px;
+        }
+        
+        .certification-image {
+            max-width: 200px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+        
+        .certification-text {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+        }
+        
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .faq-question {
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 0 20px;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+        
+        /* Sticky WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--text);
+            color: white;
+            padding: 15px 0;
+            z-index: 1001;
+            display: none;
+        }
+        
+        .cookie-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cookie-text {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .videos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--background);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s;
+                z-index: 1002;
+                padding: 80px 20px 20px;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-text {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container">
+            Free shipping on orders over ₹799 · Made In India · ISO Certified · 100% Natural · Paraben Free · Sulfate Free.
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Satvik Beauty Logo">
+            </a>
+            
+            <button class="mobile-menu-btn">☰</button>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products...">
+                    <button>🔍</button>
+                </div>
+                <a href="#" class="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- New Hero Section -->
+    <section class="hero-hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-inner">
+            <div class="hero-text-block">
+                <h2 class="hero-title">100% Natural.<br>Handcrafted.Toxin-free.</h2>
+                 <p class="hero-sub">Small Batches Production.</p> 
+                <div class="hero-ctas">
+                    <a href="products.html" class="btn">Shop Now</a>
+                    <a href="about.html" class="btn btn-outline">Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="categories">
+                <div class="category-card" onclick="window.location.href='products.html#face-care'">
+                    <div class="category-icon">👩</div>
+                    <h3>Face Care</h3>
+                    <p>Face masks, cleansers & more</p>
+                </div>
+                <div class="category-card" onclick="window.location.href='products.html#body-care'">
+                    <div class="category-icon">💪</div>
+                    <h3>Body Care</h3>
+                    <p>Soaps, scrubs & body care</p>
+                </div>
+                <div class="category-card" onclick="window.location.href='products.html#hair-care'">
+                    <div class="category-icon">💇</div>
+                    <h3>Hair Care</h3>
+                    <p>Oils, serums & treatments</p>
+                </div>
+                <div class="category-card" onclick="window.location.href='products.html#makeup'">
+                    <div class="category-icon">💄</div>
+                    <h3>Makeup</h3>
+                    <p>Lipsticks, tints & balms</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="products-grid">
+                <!-- Product 1 - D-Tan Face Mask -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="abcut.jpg" alt="Natural D-Tan Face Mask" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural D-Tan Face Mask</h3>
+                        <div class="product-price">₹250</div>
+                        <div class="product-ingredients">Removes tan & brightens skin naturally</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural D-Tan Face Mask" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 - D-Tan Soap -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="neamsoap.jpg" alt="Natural D-Tan Soap" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">A2 Cow Ghee Neem Soap</h3>
+                        <div class="product-price">₹150</div>
+                        <div class="product-ingredients">Neem soap for Reducing skin irritations & itching. Anti bacterial soap</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty A2 Cow Ghee Neem Soap" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 - Hair Oil -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="hairoil.jpg" alt="Anti Hairfall Oil" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Anti Hairfall Oil</h3>
+                        <div class="product-price">₹300</div>
+                        <div class="product-ingredients">Reduces hair fall, promotes growth</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Anti Hairfall Oil" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View More Products Button -->
+            <div style="text-align: center; margin-top: 28px;">
+                <a href="products.html" class="btn">View More Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification
+    <section class="section">
+        <div class="container">
+            <div class="certification">
+                <div style="width: 200px; height: 150px; background-color: #e0e0e0; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center;">
+                    ISO Certificate Image
+                </div>
+                <p class="certification-text">ISO Certified · Cruelty Free · Paraben & Sulfate Free.</p>
+            </div>
+        </div>
+    </section> -->
+
+      <!-- YouTube Videos Section -->
+    <section class="section videos-section">
+        <div class="container">
+            <h2 class="section-title">Watch & Learn</h2>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/NZ2riAFcfns" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">No-Foundation Makeup with Red Lips</h3>
+                        <p class="video-description">A quick tutorial on achieving a natural, radiant look—no foundation needed. Just flawless skin prep and a bold red lip for timeless impact</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/r6BhNeQ121Q" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">What’s Inside: Daily Sunscreen Essentials</h3>
+                        <p class="video-description">Discover how to apply sunscreen correctly, understand SPF benefits, and choose the right formula for lasting protection and healthy skin.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/vEjJrsowa7c" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Aloe Vera Gel: Pure Care for Your Skin</h3>
+                        <p class="video-description">Soothing and lightweight, our Aloe Vera Gel helps calm irritated skin, reduce redness, and lock in moisture. Ideal for daily use to keep your skin refreshed, smooth, and naturally radiant.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The D-Tan face mask has transformed my skin! It feels so much brighter and cleaner after just a few uses."</p>
+                    <div class="testimonial-author">- Priya S.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I love that Satvik Beauty products are truly natural. My sensitive skin has never been happier!"</p>
+                    <div class="testimonial-author">- Anjali M.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The hair oil has significantly reduced my hair fall. I can see new baby hairs growing too!"</p>
+                    <div class="testimonial-author">- Rohan K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are Satvik Beauty products tested on animals?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        No, all our products are cruelty-free and never tested on animals. We are committed to ethical practices.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does shipping take?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        We typically process orders within 1-2 business days. Standard shipping takes 5-7 business days, while express shipping takes 2-3 business days.
+                    </div>
+                </div>
+                <!-- <div class="faq-item">
+                    <div class="faq-question"> -->
+                        <!-- Can I return a product if it doesn't suit me? -->
+                        <!-- <span>+</span>
+                    </div>
+                    <div class="faq-answer"> -->
+                        <!-- Yes, we offer a 30-day return policy for unopened and unused products. Please contact our customer service for assistance. -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="Satvik Beauty Logo">
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="social-links">
+                    
+                    <a href="https://www.instagram.com/satvikbeauty56"><img src="instagram (1).png" style="width:36px; height:36px;"></a>
+                    <a href="https://www.youtube.com/@satvikbeautycosmetics"><img src="youtube.png" style="width:36px; height:36px;"></a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Satvik Beauty. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky WhatsApp Button -->
+    <a href="https://wa.me/919594975477" class="whatsapp-button">💬</a>
+
+    <!-- Cookie Consent
+    <div class="cookie-consent">
+        <div class="container cookie-content">
+            <div class="cookie-text">
+                We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn" id="accept-cookies">Accept</button>
+                <button class="btn btn-outline" id="decline-cookies">Decline</button>
+            </div>
+        </div>
+    </div> -->
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Add to Cart Functionality
+        let cartCount = 0;
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                cartCount++;
+                document.getElementById('cart-count').textContent = cartCount;
+                alert('Product added to cart!');
+            });
+        });
+
+        // Cookie Consent
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.querySelector('.cookie-consent').style.display = 'block';
+        }
+
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.querySelector('.cookie-consent').style.display = 'none';
+        });
+
+        document.getElementById('decline-cookies').addEventListener('click', () => {
+            document.querySelector('.cookie-consent').style.display = 'none';
+        });
+
+        // Search Functionality
+        document.querySelector('.search-bar button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-bar input').value;
+            if (searchTerm.trim() !== '') {
+                alert(`Searching for: ${searchTerm}`);
+                // In a real implementation, this would filter products
+            }
+        });
+
+        // WhatsApp Product Order Function
+        function openWhatsAppForProduct(productName) {
+            const message = `Hello, I'm interested in ${productName}`;
+            const whatsappUrl = `https://wa.me/919594975477?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

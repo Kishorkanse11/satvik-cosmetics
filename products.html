@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Satvik Beauty</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #ff6f99;
+            --accent: #d84f7a;
+            --text: #0b0b0b;
+            --background: #ffffff;
+            --light-gray: #f5f5f5;
+            --gray: #e0e0e0;
+            --dark-gray: #888888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 111, 153, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--text);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        /* Topbar */
+        .topbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+        
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-bar input {
+            padding: 8px 12px;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            width: 200px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+        
+        .cart-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .cart-btn:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Products Hero */
+        .products-hero {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #fff 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .products-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .products-hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+        
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--gray);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            height: 250px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-details {
+            padding: 25px;
+        }
+        
+        .product-name {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        
+        .product-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-description {
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+            font-size: 14px;
+        }
+        
+        .product-ingredients {
+            font-size: 12px;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .product-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+        }
+        
+        /* Product Badge */
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .product-card {
+            position: relative;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Sticky WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--text);
+            color: white;
+            padding: 15px 0;
+            z-index: 1001;
+            display: none;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cookie-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cookie-text {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--background);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s;
+                z-index: 1002;
+                padding: 80px 20px 20px;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .products-hero h1 {
+                font-size: 32px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+            
+            .category-filter {
+                gap: 10px;
+            }
+            
+            .category-btn {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-text {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container">
+             Free shipping on orders over ₹799 · Made In India · ISO Certified · 100% Natural · Paraben Free · Sulfate Free.
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Satvik Beauty Logo">
+            </a>
+            
+            <button class="mobile-menu-btn">☰</button>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products...">
+                    <button>🔍</button>
+                </div>
+                <a href="#" class="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Hero -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>Our Natural Products</h1>
+            <p>Discover our range of Ayurveda-inspired beauty products crafted with pure, natural ingredients</p>
+        </div>
+    </section>
+
+    <!-- Category Filter -->
+    <section class="section">
+        <div class="container">
+            <div class="category-filter">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="face-care">Face Care</button>
+                <button class="category-btn" data-category="body-care">Body Care</button>
+                <button class="category-btn" data-category="hair-care">Hair Care</button>
+                <button class="category-btn" data-category="makeup">Makeup</button>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Face Care Products -->
+                <div class="product-card" data-category="face-care">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <img src="abcut.jpg" alt="Satvik Beauty Natural D-Tan Face Mask">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural D-Tan Face Mask</h3>
+                        <div class="product-price">₹250</div>
+                        <p class="product-description">Deep-cleansing D-Tan face mask that removes tan and brightens skin tone naturally.</p>
+                        <div class="product-ingredients">Ingredients: Kaoline clay, Sandalwood extracts, Papaya extracts, Rice extracts, Potato extracts, Kojic acid, Aloe vera extracts, Rose water.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural D-Tan Face Mask" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="face-care">
+                    <div class="product-image">
+                        <img src="aloevera.jpg" alt="Satvik Beauty Pure Aloe Vera Gel">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Pure Aloe Vera Gel</h3>
+                        <div class="product-price">₹200</div>
+                        <p class="product-description">Cooling hydrating gel suitable for all skin types, perfect as a daily moisturizer and after-sun care.</p>
+                        <div class="product-ingredients">Ingredients: 99% pure aloe vera juice, Glycerine, Xanthan gum, Vitamin E.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Pure Aloe Vera Gel" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Body Care Products -->
+                <div class="product-card" data-category="body-care">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-image">
+                        <img src="neamsoap.jpg" alt="Satvik Beauty Natural D-Tan Soap">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">A2 Cow Ghee Neem Soap</h3>
+                        <div class="product-price">₹150</div>
+                        <p class="product-description">Neem soap for Reducing skin irritations & itching. Anti bacterial soap.</p>
+                        <div class="product-ingredients">Ingredients: Goat milk, coconute oil, glycerine, Neem, Neem oil, coldpress Almond oil, A2 cow ghee.</div>
+
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural D-Tan Soap" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                  <div class="product-card" data-category="body-care">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-image">
+                        <img src="dtansoap.jpg" alt="Satvik Beauty Natural D-Tan Soap">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural D-Tan Soap</h3>
+                        <div class="product-price">₹150</div>
+                        <p class="product-description">Handmade Ayurvedic soap enriched with Kumkumadi and Multani mitti for soft, radiant skin.</p>
+                        <div class="product-ingredients">Ingredients: Goat milk, Glycerine, Coconut oil, Saffron, Honey, Rose, Sandalwood, Multani mitti, Kasturi turmeric, Masoor, Potato, Rice, Almond oil, Vitamin E, Kumkumadi oil.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural D-Tan Soap" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hair Care Products -->
+                <div class="product-card" data-category="hair-care">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <img src="hairoil.jpg" alt="Satvik Beauty Anti Hairfall Oil">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Anti Hairfall Oil</h3>
+                        <div class="product-price">₹300</div>
+                        <p class="product-description">Nourishing blend that strengthens roots, reduces hair fall, and promotes natural hair growth.</p>
+                        <div class="product-ingredients">Ingredients: Coldpressed coconut oil, Almond oil, Kalonji oil, Brahmi, Shikakai, Bhringraj, Aloe vera, Neem, Tulsi, Reetha, Jojoba oil, Rosemary oil, Vitamin E, Moringa, Rosehip oil, Camphor, Clove.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Anti Hairfall Oil" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Makeup Products -->
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="brickred.png" alt="Satvik Beauty Natural Lipsticks">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural Lipsticks - Brick Red</h3>
+                        <div class="product-price">₹300</div>
+                        <p class="product-description">Soft, creamy, long-lasting lip color made with 100% natural butters and carmine-free pigments.</p>
+                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural Lipsticks" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="cherryred.png" alt="Satvik Beauty Lipstick Shade 1">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural Lipstick - Cherry Red</h3>
+                        <div class="product-price">₹300</div>
+                        <p class="product-description">Elegant Cherry Red shade lipstick with nourishing natural ingredients.</p>
+                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural Lipstick - Cherry Red" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="berrypink.png" alt="Satvik Beauty Lipstick Shade 2">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural Lipstick - Berry Pink</h3>
+                        <div class="product-price">₹300</div>
+                        <p class="product-description">Vibrant berry pink shade lipstick perfect for everyday wear.</p>
+                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural Lipstick - Berry Pink" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="chocobrownie.png" alt="Satvik Beauty Lipstick Shade 3">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural Lipstick - Choco Brownie</h3>
+                        <div class="product-price">₹300</div>
+                        <p class="product-description">Rich chocolate brown shade lipstick for a bold, beautiful look.</p>
+                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural Lipstick - Choco Brownie" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                  <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="Reddehlila.png" alt="Satvik Beauty Matte Lipstick">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural Lipstick - Red Dehlila</h3>
+                        <div class="product-price">₹300</div>
+                        <p class="product-description">Velvety matte finish lipstick in beautiful red dehlila shades.</p>
+                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural Lipstick - Red Dehlila" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="lipstick1.jpg" alt="Satvik Beauty Lipstick Collection">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Lipstick Collection Set</h3>
+                        <div class="product-price">₹799</div>
+                        <p class="product-description">Complete lipstick collection with 4 stunning shades for every occasion.</p>
+                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Lipstick Collection Set" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="lipbalm1.jpg" alt="Satvik Beauty Lip & Cheek Tint">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Glossy lip balm</h3>
+                        <div class="product-price">₹140</div>
+                        <p class="product-description">Multipurpose tint that gives a natural glow and nourishes lips and cheeks with Ayurvedic goodness.</p>
+                        <div class="product-ingredients">Ingredients: Natural beeswax, Cocoa butter, A2 cow ghee, Almond oil, Jojoba oil, Kumkumadi oil, Rose oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Lip & Cheek Tint" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="redroselipbalm.jpg" alt="Satvik Beauty Red Rose Lip Balm">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Glossy lip cheek tint - Red Rose</h3>
+                        <div class="product-price">₹140</div>
+                        <p class="product-description">Multipurpose tint that gives a natural glow and nourishes lips and cheeks with Ayurvedic goodness.</p>
+                        <div class="product-ingredients">Ingredients: Natural beeswax, Cocoa butter, A2 cow ghee, Almond oil, Jojoba oil, Kumkumadi oil, Rose oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Lip & Cheek Tint" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="pinkroselipbalm.jpg" alt="Satvik Beauty Pink Rose Lip Balm">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Glossy lip cheek tint - Pink Rose</h3>
+                        <div class="product-price">₹140</div>
+                        <p class="product-description">Multipurpose tint that gives a natural glow and nourishes lips and cheeks with Ayurvedic goodness.</p>
+                        <div class="product-ingredients">Ingredients: Natural beeswax, Cocoa butter, A2 cow ghee, Almond oil, Jojoba oil, Kumkumadi oil, Rose oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Lip & Cheek Tint" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+              
+                
+                <!-- <div class="product-card" data-category="makeup">
+                    <div class="product-image">
+                        <img src="lipstick5.jpg" alt="Satvik Beauty Lipstick Gift Set">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Lipstick Gift Set</h3>
+                        <div class="product-price">₹999</div>
+                        <p class="product-description">Perfect gift set with 5 premium natural lipsticks in elegant packaging.</p>
+                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Lipstick Gift Set" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="Satvik Beauty Logo">
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://youtube.com/@satvikbeautycosmetics?si=l0esMka1TjdUqfvZ"><img src="youtube.png" alt="YouTube" style="width: 20px; height: 20px;"></a>
+                    <a href="https://www.instagram.com/satvikbeauty56?igsh=MWIxdTZicWM1bWtmZA=="><img src="instagram (1).png" alt="Instagram" style="width: 20px; height: 20px;"></a>
+                    
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Satvik Beauty. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky WhatsApp Button -->
+    <a href="https://wa.me/919594975477" class="whatsapp-button">💬</a>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent">
+        <div class="container cookie-content">
+            <div class="cookie-text">
+                We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn" id="accept-cookies">Accept</button>
+                <button class="btn btn-outline" id="decline-cookies">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        // Add to Cart Functionality
+        let cartCount = 0;
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                cartCount++;
+                document.getElementById('cart-count').textContent = cartCount;
+                
+                // Show a more elegant notification
+                const notification = document.createElement('div');
+                notification.textContent = 'Product added to cart!';
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background-color: var(--primary);
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 1000;
+                    transition: all 0.3s ease;
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 2000);
+            });
+        });
+
+        // Category Filter
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                const products = document.querySelectorAll('.product-card');
+                
+                products.forEach(product => {
+                    if (category === 'all' || product.getAttribute('data-category') === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Cookie Consent
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.querySelector('.cookie-consent').style.display = 'block';
+        }
+
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.querySelector('.cookie-consent').style.display = 'none';
+        });
+
+        document.getElementById('decline-cookies').addEventListener('click', () => {
+            document.querySelector('.cookie-consent').style.display = 'none';
+        });
+
+        // Search Functionality
+        document.querySelector('.search-bar button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-bar input').value;
+            if (searchTerm.trim() !== '') {
+                alert(`Searching for: ${searchTerm}`);
+                // In a real implementation, this would filter products
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('nav').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

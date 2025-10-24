@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Satvik Beauty</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #ff6f99;
+            --accent: #d84f7a;
+            --text: #0b0b0b;
+            --background: #ffffff;
+            --light-gray: #f5f5f5;
+            --gray: #e0e0e0;
+            --dark-gray: #888888;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            background-color: var(--background);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 111, 153, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--text);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        /* Topbar */
+        .topbar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--background);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            display: block;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+        
+        nav a {
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-bar {
+            position: relative;
+        }
+        
+        .search-bar input {
+            padding: 8px 12px;
+            border: 1px solid var(--gray);
+            border-radius: 4px;
+            width: 200px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .search-bar button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dark-gray);
+        }
+        
+        .cart-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .cart-btn:hover {
+            color: var(--primary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1003;
+        }
+        
+        .nav-close-btn {
+            display: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--text);
+            cursor: pointer;
+            z-index: 1004;
+        }
+        
+        /* About Hero */
+        .about-hero {
+            background: linear-gradient(135deg, var(--light-gray) 0%, #fff 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .about-hero p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--dark-gray);
+        }
+        
+        /* About Content */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Premium Quality Section */
+        .premium-quality {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .premium-quality h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        
+        .quality-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .quality-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .quality-feature:hover {
+            transform: translateY(-5px);
+        }
+        
+        .quality-feature h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .quality-feature p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* Makeup Classes Section */
+        .makeup-classes {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .classes-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .classes-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .classes-content .price {
+            font-size: 42px;
+            font-weight: 800;
+            margin: 20px 0;
+            color: #ffd700;
+        }
+        
+        .classes-features {
+            text-align: left;
+            margin: 30px 0;
+        }
+        
+        .classes-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .classes-features li::before {
+            content: '✓';
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .certificate-display {
+            text-align: center;
+        }
+        
+        .certificate-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 3px solid white;
+        }
+        
+        .certificate-label {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        /* What We Don't Use */
+        .what-we-dont-use {
+            background-color: var(--light-gray);
+            padding: 50px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .what-we-dont-use h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--text);
+        }
+        
+        .ingredients-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .ingredient-item {
+            text-align: center;
+            padding: 25px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray);
+        }
+        
+        .ingredient-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .ingredient-item h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .ingredient-item p {
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+        
+        /* Certification */
+        .certification-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 50px;
+            background: var(--light-gray);
+            border-radius: 12px;
+        }
+        
+        .certification-section img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .cert-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .cert-badge {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            min-width: 150px;
+        }
+        
+        .cert-badge h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Bulk/Private Label */
+        .bulk-label {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 8px 25px rgba(255, 111, 153, 0.3);
+        }
+        
+        .bulk-label h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .bulk-label p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .bulk-label .btn-outline {
+            border-color: white;
+            color: white;
+        }
+        
+        .bulk-label .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 50px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-links a {
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Sticky WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--text);
+            color: white;
+            padding: 15px 0;
+            z-index: 1001;
+            display: none;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cookie-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cookie-text {
+            flex: 1;
+            margin-right: 20px;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .classes-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .ingredients-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quality-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-close-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--background);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+                transition: left 0.3s ease;
+                z-index: 1002;
+                padding: 80px 20px 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+                width: 100%;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px 0;
+                font-size: 18px;
+                border-bottom: 1px solid var(--light-gray);
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .about-hero h1 {
+                font-size: 32px;
+            }
+            
+            .classes-content h2 {
+                font-size: 28px;
+            }
+            
+            .classes-content .price {
+                font-size: 36px;
+            }
+            
+            .ingredients-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .quality-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cookie-text {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cert-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container">
+             Free shipping on orders over ₹799 · Made In India · ISO Certified · 100% Natural · Paraben Free · Sulfate Free.
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="Satvik Beauty Logo">
+            </a>
+            
+            <button class="mobile-menu-btn">☰</button>
+            
+            <nav>
+                <button class="nav-close-btn">×</button>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search products...">
+                    <button>🔍</button>
+                </div>
+                <a href="#" class="cart-btn">🛒 Cart (<span id="cart-count">0</span>)</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>About Satvik Beauty</h1>
+            <p>Discover our journey in creating natural, Ayurveda-inspired beauty products that nurture your skin and soul.</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="section">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>Our Story & Mission</h2>
+                <p>Satvik Beauty crafts Ayurveda-based skincare with modern safety standards. We use cold-pressed oils and pure plant extracts to create products that are gentle, effective, and free from harmful chemicals.</p>
+                <p>Our mission is to empower you with clean, natural beauty solutions that enhance your natural glow while respecting the environment and ethical practices.</p>
+                <a href="products.html" class="btn">Explore Our Products</a>
+            </div>
+            <div class="about-image">
+                <div style="width: 100%; height: 300px; background: linear-gradient(45deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; border-radius: 12px; color: white; font-weight: bold; font-size: 18px;">
+                    Premium Natural Beauty Products
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Quality Section -->
+    <section class="premium-quality">
+        <div class="container">
+            <h2>Premium Quality & Ethical Standards</h2>
+            <div class="quality-features">
+                <div class="quality-feature">
+                    <h3>Premium Ingredients</h3>
+                    <p>We use only the highest quality natural ingredients, cold-pressed oils, and pure plant extracts for maximum effectiveness.</p>
+                </div>
+                <div class="quality-feature">
+                    <h3>100% Toxin-Free</h3>
+                    <p>Completely free from parabens, sulfates, silicones, and other harmful chemicals that can damage your skin and health.</p>
+                </div>
+                <div class="quality-feature">
+                    <h3>Cruelty-Free</h3>
+                    <p>All our products are never tested on animals. We are committed to ethical and compassionate beauty practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Makeup Classes Section -->
+    <section class="makeup-classes">
+        <div class="container classes-container">
+            <div class="classes-content">
+                <h2>Self Grooming Makeup Classes</h2>
+                <p>Learn professional makeup techniques using natural, chemical-free products. Perfect your daily look and special occasion makeup with our expert guidance.</p>
+                
+                <div class="price">Starts from ₹199</div>
+                
+              
+                
+                <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Self Grooming Makeup Classes" class="btn">Enroll Now</a>
+            </div>
+            
+            <div class="certificate-display">
+                <img src="certificate.jpg" alt="Makeup Course Certificate" class="certificate-image">
+                <div class="certificate-label">Official Certificate of Completion</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Don't Use -->
+    <section class="section">
+        <div class="container">
+            <div class="what-we-dont-use">
+                <h3>What We Don't Use</h3>
+                <div class="ingredients-list">
+                    <div class="ingredient-item">
+                        <h4>Parabens</h4>
+                        <p>Harmful preservatives that can disrupt hormones and cause skin irritation.</p>
+                    </div>
+                    <div class="ingredient-item">
+                        <h4>Sulfates</h4>
+                        <p>Harsh detergents that strip natural oils and damage skin barrier.</p>
+                    </div>
+                    <div class="ingredient-item">
+                        <h4>Silicones</h4>
+                        <p>Synthetic fillers that can clog pores and prevent skin from breathing.</p>
+                    </div>
+                    <div class="ingredient-item">
+                        <h4>Lead & Heavy Metals</h4>
+                        <p>Toxic substances that accumulate in the body and cause long-term damage.</p>
+                    </div>
+                    <div class="ingredient-item">
+                        <h4>Carmine</h4>
+                        <p>Animal-derived colorant we avoid for ethical and vegan principles.</p>
+                    </div>
+                    <div class="ingredient-item">
+                        <h4>Mineral Oils</h4>
+                        <p>Petrolatum-based oils that can be contaminated and clog pores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- / -->
+
+    <!-- Bulk/Private Label -->
+    <section class="section">
+        <div class="container">
+            <div class="bulk-label">
+                <h3>Bulk Orders & Private Labeling</h3>
+                <p>Looking to stock our products in your store or create custom formulations? Contact us for bulk orders and private labeling options.</p>
+                <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="Satvik Beauty Logo">
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="products.html">Products</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="social-links">
+                     <a href="https://www.instagram.com/satvikbeauty56"><img src="instagram (1).png" style="width:36px; height:36px;"></a>
+                    <a href="https://www.youtube.com/@satvikbeautycosmetics"><img src="youtube.png" style="width:36px; height:36px;"></a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Satvik Beauty. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky WhatsApp Button -->
+    <a href="https://wa.me/919594975477" class="whatsapp-button">💬</a>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent">
+        <div class="container cookie-content">
+            <div class="cookie-text">
+                We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+            </div>
+            <div class="cookie-buttons">
+                <button class="btn" id="accept-cookies">Accept</button>
+                <button class="btn btn-outline" id="decline-cookies">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navCloseBtn = document.querySelector('.nav-close-btn');
+        const nav = document.querySelector('nav');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            nav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        navCloseBtn.addEventListener('click', function() {
+            nav.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!nav.contains(event.target) && !mobileMenuBtn.contains(event.target) && nav.classList.contains('active')) {
+                nav.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Add to Cart Functionality
+        let cartCount = 0;
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                cartCount++;
+                document.getElementById('cart-count').textContent = cartCount;
+                
+                // Show a more elegant notification
+                const notification = document.createElement('div');
+                notification.textContent = 'Product added to cart!';
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background-color: var(--primary);
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    z-index: 1000;
+                    transition: all 0.3s ease;
+                `;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 2000);
+            });
+        });
+
+        // Cookie Consent
+        if (!localStorage.getItem('cookiesAccepted')) {
+            document.querySelector('.cookie-consent').style.display = 'block';
+        }
+
+        document.getElementById('accept-cookies').addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.querySelector('.cookie-consent').style.display = 'none';
+        });
+
+        document.getElementById('decline-cookies').addEventListener('click', () => {
+            document.querySelector('.cookie-consent').style.display = 'none';
+        });
+
+        // Search Functionality
+        document.querySelector('.search-bar button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-bar input').value;
+            if (searchTerm.trim() !== '') {
+                alert(`Searching for: ${searchTerm}`);
+            }
+        });
+    </script>
+</body>
+</html>
