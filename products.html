@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products - Satvik Beauty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Products · Satvik Beauty</title>
     <style>
         /* Global Styles */
         :root {
@@ -270,6 +270,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--gray);
+            position: relative;
         }
         
         .product-card:hover {
@@ -351,10 +352,7 @@
             border-radius: 4px;
             font-size: 12px;
             font-weight: 600;
-        }
-        
-        .product-card {
-            position: relative;
+            z-index: 2;
         }
         
         /* Footer */
@@ -624,8 +622,8 @@
                 <button class="category-btn" data-category="makeup">Makeup</button>
             </div>
             
-                      <div class="products-grid">
-                             <!-- Face Care Products -->
+            <div class="products-grid">
+                <!-- Face Care Products -->
                 <div class="product-card" data-category="face-care">
                     <div class="product-badge">Bestseller</div>
                     <div class="product-image">
@@ -664,6 +662,24 @@
                     </div>
                 </div>
                 
+                <!-- NEW PRODUCT: Rose Face Wash (updated image link) -->
+                <div class="product-card" data-category="face-care">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="satvik-face_wash.jpeg" alt="Satvik Beauty Rose Face Wash">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Rose Face Wash</h3>
+                        <div class="product-price">₹260</div>
+                        <p class="product-description">Gentle rose-infused face wash that soothes and cleanses while maintaining the skin's natural moisture balance.</p>
+                        <div class="product-ingredients">Ingredients: Distilled water, Glycerine, Rose, Manjistha, Aloe vera, Mulethi.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Rose Face Wash" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="product-card" data-category="face-care">
                     <div class="product-image">
                         <img src="aloevera.jpg" alt="Satvik Beauty Pure Aloe Vera Gel">
@@ -686,13 +702,31 @@
                         <img src="satvik d-tan glowing cream.jpeg" alt="Satvik Beauty D-Tan Skin Brightning Face Glowing Cream">
                     </div>
                     <div class="product-details">
-                        <h3 class="product-name">Satvik D-Tan Brightening Cream,SPF 30,Glowing Skin</h3>
+                        <h3 class="product-name">Satvik D-Tan Brightening Cream, SPF 30</h3>
                         <div class="product-price">₹400</div>
                         <p class="product-description">Natural, chemical-free cream for melasma and pigmentation with skin-brightening benefits and SPF 30 sun protection.</p>
-                        <div class="product-ingredients">Ingredients: Natural Shea Butter, Glycerine, Papaya Extracts, Aloe vera Extracts, Rice Extracts, Carrot seed Extracts, Mulethi Extracts, Pomeogranate Oil, Zinc Oxide, Natural Fragrances</div>
+                        <div class="product-ingredients">Ingredients: Natural Shea Butter, Glycerine, Papaya Extracts, Aloe vera Extracts, Rice Extracts, Carrot seed Extracts, Mulethi Extracts, Pomegranate Oil, Zinc Oxide, Natural Fragrances</div>
                         <div class="product-actions">
                             <button class="btn add-to-cart">Add to Cart</button>
-                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty D-Tan Skin Brightning Face Glowing Cream with SPF 30" class="btn btn-outline">Order Now</a>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty D-Tan Skin Brightening Face Glowing Cream with SPF 30" class="btn btn-outline">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW PRODUCT: Natural Tinted Moisturizer (updated image link) -->
+                <div class="product-card" data-category="face-care">
+                    <div class="product-badge">Natural Glow</div>
+                    <div class="product-image">
+                        <img src="tinted-moisturezer.jpeg" alt="Satvik Beauty Natural Tinted Moisturizer">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-name">Natural Tinted Moisturizer</h3>
+                        <div class="product-price">₹350</div>
+                        <p class="product-description">Lightweight tinted moisturizer made with the goodness of Aloe vera extracts for a natural, dewy finish.</p>
+                        <div class="product-ingredients">Ingredients: Water, Aloe Vera Gel, Glycerin, Coco-Caprylate, Stearic Acid, Cocoa Butter, Potassium Sorbate, Cetyl Alcohol, Turmeric Extract, Licorice Extract, Jojoba Oil, Tint Colour, Phenoxyethanol, Vit E.</div>
+                        <div class="product-actions">
+                            <button class="btn add-to-cart">Add to Cart</button>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural Tinted Moisturizer" class="btn btn-outline">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -701,16 +735,16 @@
                 <div class="product-card" data-category="body-care">
                     <div class="product-badge">Popular</div>
                     <div class="product-image">
-                        <img src="neamsoap.jpg" alt="Satvik Beauty Natural D-Tan Soap">
+                        <img src="neamsoap.jpg" alt="Satvik Beauty A2 Cow Ghee Neem Soap">
                     </div>
                     <div class="product-details">
                         <h3 class="product-name">A2 Cow Ghee Neem Soap</h3>
                         <div class="product-price">₹150</div>
-                        <p class="product-description">Neem soap for Reducing skin irritations & itching. Anti bacterial soap.</p>
-                        <div class="product-ingredients">Ingredients: Goat milk, coconute oil, glycerine, Neem, Neem oil, coldpress Almond oil, A2 cow ghee.</div>
+                        <p class="product-description">Neem soap for reducing skin irritations & itching. Anti bacterial soap.</p>
+                        <div class="product-ingredients">Ingredients: Goat milk, coconut oil, glycerine, Neem, Neem oil, coldpress Almond oil, A2 cow ghee.</div>
                         <div class="product-actions">
                             <button class="btn add-to-cart">Add to Cart</button>
-                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Natural D-Tan Soap" class="btn btn-outline">Order Now</a>
+                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty A2 Cow Ghee Neem Soap" class="btn btn-outline">Order Now</a>
                         </div>
                     </div>
                 </div>
@@ -731,9 +765,6 @@
                         </div>
                     </div>
                 </div>
-                
-                
-              
                 
                 <!-- Hair Care Products -->
                 <div class="product-card" data-category="hair-care">
@@ -905,26 +936,6 @@
             </div>
         </div>
     </section>
-              
-                
-                <!-- <div class="product-card" data-category="makeup">
-                    <div class="product-image">
-                        <img src="lipstick5.jpg" alt="Satvik Beauty Lipstick Gift Set">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="product-name">Lipstick Gift Set</h3>
-                        <div class="product-price">₹999</div>
-                        <p class="product-description">Perfect gift set with 5 premium natural lipsticks in elegant packaging.</p>
-                        <div class="product-ingredients">Ingredients: Shea butter, Cocoa butter, Kokum butter, Carnauba wax, Candelilla wax, Castor oil, Almond oil, FDA-approved mineral pigments.</div>
-                        <div class="product-actions">
-                            <button class="btn add-to-cart">Add to Cart</button>
-                            <a href="https://wa.me/919594975477?text=Hello, I'm interested in Satvik Beauty Lipstick Gift Set" class="btn btn-outline">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer>
@@ -981,7 +992,6 @@
                 cartCount++;
                 document.getElementById('cart-count').textContent = cartCount;
                 
-                // Show a more elegant notification
                 const notification = document.createElement('div');
                 notification.textContent = 'Product added to cart!';
                 notification.style.cssText = `
@@ -1010,12 +1020,10 @@
         // Category Filter
         document.querySelectorAll('.category-btn').forEach(button => {
             button.addEventListener('click', function() {
-                // Remove active class from all buttons
                 document.querySelectorAll('.category-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 
-                // Add active class to clicked button
                 this.classList.add('active');
                 
                 const category = this.getAttribute('data-category');
@@ -1050,7 +1058,6 @@
             const searchTerm = document.querySelector('.search-bar input').value;
             if (searchTerm.trim() !== '') {
                 alert(`Searching for: ${searchTerm}`);
-                // In a real implementation, this would filter products
             }
         });
 
